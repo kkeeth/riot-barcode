@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/kkeeth/riot-barcode/master/assets/img/barcode.png" alt="barcode" width="600">
-  <br>
+  <br />
+  <br />
 <a href="https://badge.fury.io/js/riot-barcode"><img src="https://badge.fury.io/js/riot-barcode.svg" alt="npm version" /></a>
 <img src="https://img.shields.io/badge/node-%3E%3D%2012.18.3-brightgreen.svg?style=social" alt="nodejs version" />
 <a href="https://github.com/kkeeth/riot-barcode/blob/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="MIT LICENSE" /></a>
