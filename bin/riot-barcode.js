@@ -6178,7 +6178,7 @@
 
 	  'template': function(template, expressionTypes, bindingTypes, getComponent) {
 	    return template(
-	      '<svg expr3="expr3" name="renderElement"></svg><canvas expr4="expr4" name="renderElement"></canvas><img expr5="expr5" name="renderElement" alt="barcode"/>',
+	      '<svg expr0="expr0" name="renderElement"></svg><canvas expr1="expr1" name="renderElement"></canvas><img expr2="expr2" name="renderElement" alt="barcode"/>',
 	      [{
 	        'type': bindingTypes.IF,
 
@@ -6186,8 +6186,8 @@
 	          return scope.state.settings.renderer === 'svg';
 	        },
 
-	        'redundantAttribute': 'expr3',
-	        'selector': '[expr3]',
+	        'redundantAttribute': 'expr0',
+	        'selector': '[expr0]',
 	        'template': template(null, [])
 	      }, {
 	        'type': bindingTypes.IF,
@@ -6196,8 +6196,8 @@
 	          return scope.state.settings.renderer === 'canvas';
 	        },
 
-	        'redundantAttribute': 'expr4',
-	        'selector': '[expr4]',
+	        'redundantAttribute': 'expr1',
+	        'selector': '[expr1]',
 	        'template': template(null, [])
 	      }, {
 	        'type': bindingTypes.IF,
@@ -6206,8 +6206,8 @@
 	          return scope.state.settings.renderer === 'img';
 	        },
 
-	        'redundantAttribute': 'expr5',
-	        'selector': '[expr5]',
+	        'redundantAttribute': 'expr2',
+	        'selector': '[expr2]',
 	        'template': template(null, [])
 	      }]
 	    );

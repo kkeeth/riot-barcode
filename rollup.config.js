@@ -5,7 +5,7 @@ import commonjs from "@rollup/plugin-commonjs";
 export default {
   input: "src/index.js",
   output: {
-    file: "bin/JsBarcode.js",
+    file: "bin/riot-barcode.js",
     format: "iife",
   },
   plugins: [riot(), nodeResolve(), commonjs()],
