@@ -6133,19 +6133,39 @@
 
 	var JsBarcode = /*@__PURE__*/unwrapExports(JsBarcode_1);
 
+	const initialProps = {
+	  format: "CODE128",
+	  renderer: "svg",
+	  width: 2,
+	  height: 100,
+	  displayValue: true,
+	  fontOptions: "",
+	  font: "Futura",
+	  textAlign: "center",
+	  textPosition: "bottom",
+	  textMargin: 5,
+	  fontSize: 50,
+	  background: "#ffffff",
+	  lineColor: "#000000",
+	  margin: 10,
+	  value: "JsBarcode for RiotJS",
+	};
+
 	var RiotBarcode = {
 	  'css': null,
 
 	  'exports': {
 	    state: {
-	      settings: {}
+	      settings: initialProps
 	    },
 
-	    onBeforeMount({ defaultProps: props }, state) {
-	      state.settings = props;
+	    onBeforeMount(props, state) {
+	      Object.keys(initialProps).map(key => {
+	        props[key] && (state.settings[key] = props[key]);
+	      });
 	    },
 
-	    onMounted({ defaultProps: props }, state) {
+	    onMounted(props, state) {
 	      const renderElement = this.$('[name="renderElement"]');
 	      try {
 	        new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
@@ -6158,36 +6178,36 @@
 
 	  'template': function(template, expressionTypes, bindingTypes, getComponent) {
 	    return template(
-	      '<svg expr0="expr0" name="renderElement"></svg><canvas expr1="expr1" name="renderElement"></canvas><img expr2="expr2" name="renderElement" alt="barcode"/>',
+	      '<svg expr3="expr3" name="renderElement"></svg><canvas expr4="expr4" name="renderElement"></canvas><img expr5="expr5" name="renderElement" alt="barcode"/>',
 	      [{
 	        'type': bindingTypes.IF,
 
 	        'evaluate': function(scope) {
-	          return scope.props.defaultProps.renderer === 'svg';
+	          return scope.state.settings.renderer === 'svg';
 	        },
 
-	        'redundantAttribute': 'expr0',
-	        'selector': '[expr0]',
+	        'redundantAttribute': 'expr3',
+	        'selector': '[expr3]',
 	        'template': template(null, [])
 	      }, {
 	        'type': bindingTypes.IF,
 
 	        'evaluate': function(scope) {
-	          return scope.props.defaultProps.renderer === 'canvas';
+	          return scope.state.settings.renderer === 'canvas';
 	        },
 
-	        'redundantAttribute': 'expr1',
-	        'selector': '[expr1]',
+	        'redundantAttribute': 'expr4',
+	        'selector': '[expr4]',
 	        'template': template(null, [])
 	      }, {
 	        'type': bindingTypes.IF,
 
 	        'evaluate': function(scope) {
-	          return scope.props.defaultProps.renderer === 'img';
+	          return scope.state.settings.renderer === 'img';
 	        },
 
-	        'redundantAttribute': 'expr2',
-	        'selector': '[expr2]',
+	        'redundantAttribute': 'expr5',
+	        'selector': '[expr5]',
 	        'template': template(null, [])
 	      }]
 	    );
@@ -6196,24 +6216,6 @@
 	  'name': 'riot-barcode'
 	};
 
-	component(RiotBarcode)(document.getElementById("app"), {
-	  defaultProps: {
-	    format: "CODE128",
-	    renderer: "svg",
-	    width: 2,
-	    height: 100,
-	    displayValue: true,
-	    fontOptions: "",
-	    font: "Futura",
-	    textAlign: "center",
-	    textPosition: "bottom",
-	    textMargin: 5,
-	    fontSize: 50,
-	    background: "#ffffff",
-	    lineColor: "#000000",
-	    margin: 10,
-	    value: "JsBarcode for RiotJS",
-	  },
-	});
+	component(RiotBarcode)(document.getElementById("app"));
 
 }());

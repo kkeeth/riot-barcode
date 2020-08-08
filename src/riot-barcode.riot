@@ -1,19 +1,39 @@
 <riot-barcode>
-  <svg if={ props.defaultProps.renderer === 'svg' } name="renderElement"></svg>
-  <canvas if={ props.defaultProps.renderer === 'canvas' } name="renderElement"></canvas>
-  <img if={ props.defaultProps.renderer === 'img' } name="renderElement" alt="barcode" />
+  <svg name="renderElement" if={ state.settings.renderer === 'svg' }></svg>
+  <canvas name="renderElement" if={ state.settings.renderer === 'canvas' }></canvas>
+  <img name="renderElement" if={ state.settings.renderer === 'img' } alt="barcode" />
 
   <script>
     import JsBarcode from 'jsbarcode';
 
+    const initialProps = {
+      format: "CODE128",
+      renderer: "svg",
+      width: 2,
+      height: 100,
+      displayValue: true,
+      fontOptions: "",
+      font: "Futura",
+      textAlign: "center",
+      textPosition: "bottom",
+      textMargin: 5,
+      fontSize: 50,
+      background: "#ffffff",
+      lineColor: "#000000",
+      margin: 10,
+      value: "JsBarcode for RiotJS",
+    };
+
     export default {
       state: {
-        settings: {}
+        settings: initialProps
       },
-      onBeforeMount({ defaultProps: props }, state) {
-        state.settings = props
+      onBeforeMount(props, state) {
+        Object.keys(initialProps).map(key => {
+          props[key] && (state.settings[key] = props[key])
+        })
       },
-      onMounted({ defaultProps: props }, state) {
+      onMounted(props, state) {
         const renderElement = this.$('[name="renderElement"]');
         try {
           new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
