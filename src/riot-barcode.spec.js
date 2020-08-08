@@ -12,4 +12,12 @@ describe("RiotBarcode component's Unit Test", () => {
 
     expect(component.$("svg").innerHTML).to.match(/<rect/);
   });
+
+  it("The component is rendered 'img' tag", () => {
+    const div = document.createElement("div");
+    div.setAttribute("renderer", "img");
+    const component = mountBarcode(div);
+
+    expect(component.$("img").innerHTML).to.be.equal("");
+  });
 });
