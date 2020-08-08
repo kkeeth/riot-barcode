@@ -7,9 +7,7 @@
 
 </p>
 
-`riot-barcode` is a simple **barcode generator** for [riotjs](https://riot.js.org/) by using [JsBarcode](https://lindell.me/JsBarcode/) library.
-
-Preview: http://kkeeth.github.io/riot-barcode/
+`riot-barcode` is a simple **barcode generator** for [riotjs](https://riot.js.org/) by using [JsBarcode](https://lindell.me/JsBarcode/) library. For detailed specifications, please refer to [this document](https://github.com/lindell/JsBarcode/blob/master/README.md#supported-barcodes).
 
 ## Start
 

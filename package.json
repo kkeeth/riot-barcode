@@ -19,7 +19,7 @@
     "build": "rollup -c",
     "test": "nyc --require esm --require jsdom-global/register --require ./test/register-riot-extension.js mocha src/**/*.spec.js",
     "start": "npm run watch & npm run server",
-    "server": "browser-sync start --files 'dist/*, style.css, index.html' --server",
+    "server": "browser-sync start --files 'bin/*, demo.html' --server --startPath='demo.html'",
     "prepublishOnly": "npm test",
     "watch": "rollup -c -w 'src/**'",
     "cov": "nyc report --reporter=text-lcov | coveralls"
