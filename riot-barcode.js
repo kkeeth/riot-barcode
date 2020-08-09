@@ -6152,7 +6152,7 @@
 	};
 
 	var RiotBarcode = {
-	  'css': null,
+	  'css': `riot-barcode input,[is="riot-barcode"] input{ margin-bottom: 20px; font-size: 1.2rem; border-radius: 8px; border: 1px solid #333; height: 24px; padding: 10px; } riot-barcode .notification,[is="riot-barcode"] .notification{ font-size: 1.8rem; color: #ED4054; }`,
 
 	  'exports': {
 	    state: {
@@ -6165,7 +6165,11 @@
 	      });
 	    },
 
-	    onMounted(props, state) {
+	    onMounted() {
+	      this.update();
+	    },
+
+	    onUpdated(props, state) {
 	      const renderElement = this.$('[name="renderElement"]');
 	      try {
 	        new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
@@ -6173,42 +6177,93 @@
 	        // prevent stop the parent process
 	        window.console.error(e);
 	      }
+	    },
+
+	    handleChange(e) {
+	      this.update({
+	        settings: {
+	          ...this.state.settings,
+	          value: e.target.value || ""
+	        }
+	      });
 	    }
 	  },
 
 	  'template': function(template, expressionTypes, bindingTypes, getComponent) {
 	    return template(
-	      '<svg expr0="expr0" name="renderElement"></svg><canvas expr1="expr1" name="renderElement"></canvas><img expr2="expr2" name="renderElement" alt="barcode"/>',
+	      '<p>Change input characters: </p><input expr131="expr131" name="text"/><div expr132="expr132"></div><p expr136="expr136" class="notification"></p>',
 	      [{
-	        'type': bindingTypes.IF,
+	        'redundantAttribute': 'expr131',
+	        'selector': '[expr131]',
 
-	        'evaluate': function(scope) {
-	          return scope.state.settings.renderer === 'svg';
-	        },
+	        'expressions': [{
+	          'type': expressionTypes.EVENT,
+	          'name': 'oninput',
 
-	        'redundantAttribute': 'expr0',
-	        'selector': '[expr0]',
-	        'template': template(null, [])
+	          'evaluate': function(scope) {
+	            return scope.handleChange;
+	          }
+	        }, {
+	          'type': expressionTypes.VALUE,
+
+	          'evaluate': function(scope) {
+	            return scope.state.settings.value;
+	          }
+	        }]
 	      }, {
 	        'type': bindingTypes.IF,
 
 	        'evaluate': function(scope) {
-	          return scope.state.settings.renderer === 'canvas';
+	          return scope.state.settings.value.length > 0;
 	        },
 
-	        'redundantAttribute': 'expr1',
-	        'selector': '[expr1]',
-	        'template': template(null, [])
+	        'redundantAttribute': 'expr132',
+	        'selector': '[expr132]',
+
+	        'template': template(
+	          '<svg expr133="expr133" name="renderElement"></svg><canvas expr134="expr134" name="renderElement"></canvas><img expr135="expr135" name="renderElement" alt="barcode"/>',
+	          [{
+	            'type': bindingTypes.IF,
+
+	            'evaluate': function(scope) {
+	              return scope.state.settings.renderer === 'svg';
+	            },
+
+	            'redundantAttribute': 'expr133',
+	            'selector': '[expr133]',
+	            'template': template(null, [])
+	          }, {
+	            'type': bindingTypes.IF,
+
+	            'evaluate': function(scope) {
+	              return scope.state.settings.renderer === 'canvas';
+	            },
+
+	            'redundantAttribute': 'expr134',
+	            'selector': '[expr134]',
+	            'template': template(null, [])
+	          }, {
+	            'type': bindingTypes.IF,
+
+	            'evaluate': function(scope) {
+	              return scope.state.settings.renderer === 'img';
+	            },
+
+	            'redundantAttribute': 'expr135',
+	            'selector': '[expr135]',
+	            'template': template(null, [])
+	          }]
+	        )
 	      }, {
 	        'type': bindingTypes.IF,
 
 	        'evaluate': function(scope) {
-	          return scope.state.settings.renderer === 'img';
+	          return scope.state.settings.value.length === 0;
 	        },
 
-	        'redundantAttribute': 'expr2',
-	        'selector': '[expr2]',
-	        'template': template(null, [])
+	        'redundantAttribute': 'expr136',
+	        'selector': '[expr136]',
+	        'template': template('\n    Please enter at least one character in your text.\n  ', [])
 	      }]
 	    );
 	  },
