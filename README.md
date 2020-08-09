@@ -16,13 +16,19 @@ Please see the demo: [https://kkeeth.github.io/riot-barcode/](https://kkeeth.git
 ## Start
 
 ```
-yarn start
+$ yarn start
 ```
 
 ## Build
 
 ```
-yarn build
+$ yarn build
+```
+
+## Test
+
+```bash
+$ yarn test
 ```
 
 # License
