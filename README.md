@@ -3,6 +3,7 @@
   <br />
   <br />
 <a href="https://badge.fury.io/js/riot-barcode"><img src="https://badge.fury.io/js/riot-barcode.svg" alt="npm version" /></a>
+<a href="https://travis-ci.org/kkeeth/riot-barcode"><img src="https://travis-ci.org/kkeeth/riot-barcode.svg" alt="Build Status" /></a>
 <img src="https://img.shields.io/badge/node-%3E%3D%2012.18.3-brightgreen.svg?style=social" alt="nodejs version" />
 <a href="https://github.com/kkeeth/riot-barcode/blob/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="MIT LICENSE" /></a>
 
