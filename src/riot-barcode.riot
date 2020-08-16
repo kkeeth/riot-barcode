@@ -1,6 +1,5 @@
 <riot-barcode>
   <p>Change input characters: </p>
-  <input name="text" oninput={ handleChange } value={ state.settings.value } />
   <div if={ state.settings.value.length > 0 }>
     <svg name="renderElement" if={ state.settings.renderer === 'svg' }></svg>
     <canvas name="renderElement" if={ state.settings.renderer === 'canvas' }></canvas>
@@ -25,8 +24,8 @@
       textPosition: "bottom",
       textMargin: 5,
       fontSize: 50,
-      background: "#ffffff",
-      lineColor: "#000000",
+      background: "#fff",
+      lineColor: "#000",
       margin: 10,
       value: "JsBarcode for RiotJS",
     };
@@ -49,16 +48,8 @@
           new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
         } catch (e) {
           // prevent stop the parent process
-          window.console.error(e);
+          console.error(e);
         }
-      },
-      handleChange(e) {
-        this.update({
-          settings: {
-            ...this.state.settings,
-            value: e.target.value || ""
-          }
-        })
       }
     }
   </script>

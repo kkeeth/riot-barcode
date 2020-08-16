@@ -6145,8 +6145,8 @@
 	  textPosition: "bottom",
 	  textMargin: 5,
 	  fontSize: 50,
-	  background: "#ffffff",
-	  lineColor: "#000000",
+	  background: "#fff",
+	  lineColor: "#000",
 	  margin: 10,
 	  value: "JsBarcode for RiotJS",
 	};
@@ -6175,53 +6175,26 @@
 	        new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
 	      } catch (e) {
 	        // prevent stop the parent process
-	        window.console.error(e);
+	        console.error(e);
 	      }
-	    },
-
-	    handleChange(e) {
-	      this.update({
-	        settings: {
-	          ...this.state.settings,
-	          value: e.target.value || ""
-	        }
-	      });
 	    }
 	  },
 
 	  'template': function(template, expressionTypes, bindingTypes, getComponent) {
 	    return template(
-	      '<p>Change input characters: </p><input expr131="expr131" name="text"/><div expr132="expr132"></div><p expr136="expr136" class="notification"></p>',
+	      '<p>Change input characters: </p><div expr15="expr15"></div><p expr19="expr19" class="notification"></p>',
 	      [{
-	        'redundantAttribute': 'expr131',
-	        'selector': '[expr131]',
-
-	        'expressions': [{
-	          'type': expressionTypes.EVENT,
-	          'name': 'oninput',
-
-	          'evaluate': function(scope) {
-	            return scope.handleChange;
-	          }
-	        }, {
-	          'type': expressionTypes.VALUE,
-
-	          'evaluate': function(scope) {
-	            return scope.state.settings.value;
-	          }
-	        }]
-	      }, {
 	        'type': bindingTypes.IF,
 
 	        'evaluate': function(scope) {
 	          return scope.state.settings.value.length > 0;
 	        },
 
-	        'redundantAttribute': 'expr132',
-	        'selector': '[expr132]',
+	        'redundantAttribute': 'expr15',
+	        'selector': '[expr15]',
 
 	        'template': template(
-	          '<svg expr133="expr133" name="renderElement"></svg><canvas expr134="expr134" name="renderElement"></canvas><img expr135="expr135" name="renderElement" alt="barcode"/>',
+	          '<svg expr16="expr16" name="renderElement"></svg><canvas expr17="expr17" name="renderElement"></canvas><img expr18="expr18" name="renderElement" alt="barcode"/>',
 	          [{
 	            'type': bindingTypes.IF,
 
@@ -6229,8 +6202,8 @@
 	              return scope.state.settings.renderer === 'svg';
 	            },
 
-	            'redundantAttribute': 'expr133',
-	            'selector': '[expr133]',
+	            'redundantAttribute': 'expr16',
+	            'selector': '[expr16]',
 	            'template': template(null, [])
 	          }, {
 	            'type': bindingTypes.IF,
@@ -6239,8 +6212,8 @@
 	              return scope.state.settings.renderer === 'canvas';
 	            },
 
-	            'redundantAttribute': 'expr134',
-	            'selector': '[expr134]',
+	            'redundantAttribute': 'expr17',
+	            'selector': '[expr17]',
 	            'template': template(null, [])
 	          }, {
 	            'type': bindingTypes.IF,
@@ -6249,8 +6222,8 @@
 	              return scope.state.settings.renderer === 'img';
 	            },
 
-	            'redundantAttribute': 'expr135',
-	            'selector': '[expr135]',
+	            'redundantAttribute': 'expr18',
+	            'selector': '[expr18]',
 	            'template': template(null, [])
 	          }]
 	        )
@@ -6261,8 +6234,8 @@
 	          return scope.state.settings.value.length === 0;
 	        },
 
-	        'redundantAttribute': 'expr136',
-	        'selector': '[expr136]',
+	        'redundantAttribute': 'expr19',
+	        'selector': '[expr19]',
 	        'template': template('\n    Please enter at least one character in your text.\n  ', [])
 	      }]
 	    );
@@ -6271,6 +6244,6 @@
 	  'name': 'riot-barcode'
 	};
 
-	component(RiotBarcode)(document.getElementById("app"));
+	register("riot-barcode", RiotBarcode);
 
 }());

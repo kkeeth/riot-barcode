@@ -1,5 +1,5 @@
 import "@riotjs/hot-reload";
-import { component } from "riot";
+import { register } from "riot";
 import RiotBarcode from "./riot-barcode.riot";
 
-component(RiotBarcode)(document.getElementById("app"));
+register("riot-barcode", RiotBarcode);
