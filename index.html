@@ -11,14 +11,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="riot+compiler.js"></script>
+    <script defer src="riot-barcode.js"></script>
   </head>
   <body>
     <div class="container">
       <main class="column">
-        <div id="app"></div>
+        <app></app>
+        <riot-barcode></riot-barcode>
       </main>
     </div>
-
-    <script defer src="riot-barcode.js"></script>
+    <script defer src="app.riot" type="riot"></script>
+    <script>
+      riot.compile().then(() => {
+        riot.mount("app, riot-barcode");
+      });
+    </script>
   </body>
 </html>

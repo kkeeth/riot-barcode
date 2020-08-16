@@ -6145,8 +6145,8 @@
 	  textPosition: "bottom",
 	  textMargin: 5,
 	  fontSize: 50,
-	  background: "#ffffff",
-	  lineColor: "#000000",
+	  background: "#fff",
+	  lineColor: "#000",
 	  margin: 10,
 	  value: "JsBarcode for RiotJS",
 	};
@@ -6191,10 +6191,10 @@
 
 	  'template': function(template, expressionTypes, bindingTypes, getComponent) {
 	    return template(
-	      '<p>Change input characters: </p><input expr131="expr131" name="text"/><div expr132="expr132"></div><p expr136="expr136" class="notification"></p>',
+	      '<p>Change input characters: </p><input expr0="expr0" name="text"/><div expr1="expr1"></div><p expr5="expr5" class="notification"></p>',
 	      [{
-	        'redundantAttribute': 'expr131',
-	        'selector': '[expr131]',
+	        'redundantAttribute': 'expr0',
+	        'selector': '[expr0]',
 
 	        'expressions': [{
 	          'type': expressionTypes.EVENT,
@@ -6217,11 +6217,11 @@
 	          return scope.state.settings.value.length > 0;
 	        },
 
-	        'redundantAttribute': 'expr132',
-	        'selector': '[expr132]',
+	        'redundantAttribute': 'expr1',
+	        'selector': '[expr1]',
 
 	        'template': template(
-	          '<svg expr133="expr133" name="renderElement"></svg><canvas expr134="expr134" name="renderElement"></canvas><img expr135="expr135" name="renderElement" alt="barcode"/>',
+	          '<svg expr2="expr2" name="renderElement"></svg><canvas expr3="expr3" name="renderElement"></canvas><img expr4="expr4" name="renderElement" alt="barcode"/>',
 	          [{
 	            'type': bindingTypes.IF,
 
@@ -6229,8 +6229,8 @@
 	              return scope.state.settings.renderer === 'svg';
 	            },
 
-	            'redundantAttribute': 'expr133',
-	            'selector': '[expr133]',
+	            'redundantAttribute': 'expr2',
+	            'selector': '[expr2]',
 	            'template': template(null, [])
 	          }, {
 	            'type': bindingTypes.IF,
@@ -6239,8 +6239,8 @@
 	              return scope.state.settings.renderer === 'canvas';
 	            },
 
-	            'redundantAttribute': 'expr134',
-	            'selector': '[expr134]',
+	            'redundantAttribute': 'expr3',
+	            'selector': '[expr3]',
 	            'template': template(null, [])
 	          }, {
 	            'type': bindingTypes.IF,
@@ -6249,8 +6249,8 @@
 	              return scope.state.settings.renderer === 'img';
 	            },
 
-	            'redundantAttribute': 'expr135',
-	            'selector': '[expr135]',
+	            'redundantAttribute': 'expr4',
+	            'selector': '[expr4]',
 	            'template': template(null, [])
 	          }]
 	        )
@@ -6261,8 +6261,8 @@
 	          return scope.state.settings.value.length === 0;
 	        },
 
-	        'redundantAttribute': 'expr136',
-	        'selector': '[expr136]',
+	        'redundantAttribute': 'expr5',
+	        'selector': '[expr5]',
 	        'template': template('\n    Please enter at least one character in your text.\n  ', [])
 	      }]
 	    );
@@ -6271,6 +6271,6 @@
 	  'name': 'riot-barcode'
 	};
 
-	component(RiotBarcode)(document.getElementById("app"));
+	register("riot-barcode", RiotBarcode);
 
 }());
