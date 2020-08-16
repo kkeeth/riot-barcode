@@ -6,7 +6,7 @@
   "bugs": {
     "url": "https://github.com/kkeeth/riot-barcode/issues"
   },
-  "main": "bin/riot-barcode.js",
+  "bin": "bin/riot-barcode.js",
   "homepage": "https://github.com/kkeeth/riot-barcode#readme",
   "keywords": [
     "riot",
