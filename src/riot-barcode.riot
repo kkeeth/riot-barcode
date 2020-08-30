@@ -1,5 +1,4 @@
 <riot-barcode>
-  <p>Change input characters: </p>
   <div if={ state.settings.value.length > 0 }>
     <svg name="renderElement" if={ state.settings.renderer === 'svg' }></svg>
     <canvas name="renderElement" if={ state.settings.renderer === 'canvas' }></canvas>
@@ -10,7 +9,7 @@
   </p>
 
   <script>
-    import JsBarcode from 'jsbarcode';
+    import JsBarcode from "jsbarcode";
 
     const initialProps = {
       format: "CODE128",
