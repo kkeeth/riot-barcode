@@ -12,19 +12,18 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="riot+compiler.js"></script>
-    <script defer src="riot-barcode.js"></script>
+    <script src="riot-barcode.js"></script>
   </head>
   <body>
     <div class="container">
       <main class="column">
-        <app></app>
-        <riot-barcode></riot-barcode>
+        <div is="app"></div>
       </main>
     </div>
     <script defer src="app.riot" type="riot"></script>
     <script>
       riot.compile().then(() => {
-        riot.mount("app, riot-barcode");
+        riot.mount("[is='app']");
       });
     </script>
   </body>
