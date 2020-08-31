@@ -33,13 +33,12 @@
       state: {
         settings: initialProps
       },
-      onMounted() {
+      onMounted(props) {
+        this.settingProps(props)
         this.update()
       },
       onUpdated(props, state) {
-        Object.keys(initialProps).map(key => {
-          props[key] && (state.settings[key] = props[key])
-        })
+        this.settingProps(props)
         const renderElement = this.$('[name="renderElement"]');
         try {
           new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
@@ -47,6 +46,11 @@
           // prevent stop the parent process
           console.error(e);
         }
+      },
+      settingProps(props) {
+        Object.keys(initialProps).map(key => {
+          props[key] && (this.state.settings[key] = props[key])
+        })
       }
     }
   </script>
