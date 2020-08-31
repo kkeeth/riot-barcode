@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("riot"));
+	else if(typeof define === 'function' && define.amd)
+		define(["riot"], factory);
+	else {
+		var a = typeof exports === 'object' ? factory(require("riot")) : factory(root["riot"]);
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(window, function(__WEBPACK_EXTERNAL_MODULE_riot__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -752,8 +762,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jsba
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = riot;\n\n//# sourceURL=webpack:///external_%22riot%22?");
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_riot__;\n\n//# sourceURL=webpack:///external_%22riot%22?");
 
 /***/ })
 
 /******/ });
+});

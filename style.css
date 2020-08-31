@@ -9,3 +9,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.attachment-full {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
