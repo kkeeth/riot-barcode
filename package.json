@@ -40,6 +40,7 @@
     "@riotjs/ssr": "^4.2.1",
     "@riotjs/webpack-loader": "^4.0.3",
     "babel-loader": "^8.1.0",
+    "canvas": "^2.6.1",
     "chai": "^4.1.2",
     "eslint": "^6.8.0",
     "eslint-loader": "^3.0.3",

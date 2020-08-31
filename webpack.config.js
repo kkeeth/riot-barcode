@@ -7,6 +7,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, "bin"),
       filename:
         argv.mode === "production" ? "riot-barcode.min.js" : "riot-barcode.js",
+      libraryTarget: "umd",
     },
     devServer: {
       open: true,
