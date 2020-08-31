@@ -1,4 +1,28 @@
 <app>
   <h2>Riot Barcode Demo</h2>
-  <riot-barcode />
+  <p>
+    Please input any text:
+    <input
+      type="text"
+      oninput={ handleChange }
+      value={ state.inputValue }
+    />
+  </p>
+  <riot-barcode value={ state.inputValue } />
+
+  <script>
+    const initialValue = "JsBarcode for RiotJS"
+    export default {
+      state: {
+        inputValue: initialValue
+      },
+      handleChange(e) {
+        this.update({
+          inputValue: e.target.value
+            ? e.target.value
+            : initialValue
+        })
+      }
+    }
+  </script>
 </app>

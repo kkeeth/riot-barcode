@@ -33,15 +33,13 @@
       state: {
         settings: initialProps
       },
-      onBeforeMount(props, state) {
-        Object.keys(initialProps).map(key => {
-          props[key] && (state.settings[key] = props[key])
-        })
-      },
       onMounted() {
         this.update()
       },
       onUpdated(props, state) {
+        Object.keys(initialProps).map(key => {
+          props[key] && (state.settings[key] = props[key])
+        })
         const renderElement = this.$('[name="renderElement"]');
         try {
           new JsBarcode(renderElement, state.settings.value, Object.assign({}, state.settings));
