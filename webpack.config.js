@@ -4,7 +4,7 @@ module.exports = (env, argv) => {
   return {
     entry: "./src/index.js",
     output: {
-      path: path.resolve(__dirname, "bin"),
+      path: path.resolve(__dirname, "dist"),
       filename:
         argv.mode === "production" ? "riot-barcode.min.js" : "riot-barcode.js",
       libraryTarget: "umd",
