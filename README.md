@@ -77,7 +77,7 @@ See also the [example directory](https://github.com/kkeeth/riot-barcode/tree/mas
 
 There are several CDN services available, but I'm including two for your reference.
 
-- [JSDELIVR](https://cdn.jsdelivr.net/npm/riot-barcode@0.0.4/dist/riot-barcode.min.js)
+- [JSDELIVR](https://cdn.jsdelivr.net/npm/riot-barcode@latest/dist/riot-barcode.min.js)
 - [UNPKG](https://unpkg.com/riot-barcode/dist/riot-barcode.min.js)
 
 #### ▼ Bundler
