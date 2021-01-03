@@ -1,12 +1,9 @@
 <riot-barcode>
-  <div if={ state.settings.value.length > 0 }>
+  <div class={ state.settings.value.length === 0 && "displayNone" }>
     <svg name="renderElement" if={ state.settings.renderer === 'svg' }></svg>
     <canvas name="renderElement" if={ state.settings.renderer === 'canvas' }></canvas>
     <img name="renderElement" if={ state.settings.renderer === 'img' } alt="barcode" />
   </div>
-  <p if={ state.settings.value.length === 0 } class="notification">
-    Please enter at least one character in your text.
-  </p>
 
   <script>
     import JsBarcode from "jsbarcode";
@@ -37,7 +34,7 @@
         this.settingProps(props)
         this.update()
       },
-      onUpdated(props, state) {
+      onBeforeUpdate(props, state) {
         this.settingProps(props)
         const renderElement = this.$('[name="renderElement"]');
         try {
@@ -48,9 +45,10 @@
         }
       },
       settingProps(props) {
-        Object.keys(initialProps).map(key => {
-          props[key] && (this.state.settings[key] = props[key])
-        })
+        Object.keys(initialProps).reduce((accumulator, key) => {
+          if (props[key] !== undefined) this.state.settings[key] = props[key];
+          return accumulator;
+        }, []);
       }
     }
   </script>
@@ -67,6 +65,10 @@
     .notification {
       font-size:  1.8rem;
       color: #ED4054;
+    }
+
+    .displayNone {
+      display: none;
     }
   </style>
 </riot-barcode>
