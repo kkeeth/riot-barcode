@@ -1,6 +1,6 @@
 {
   "description": "riot-barcode is a simple barcode generator for riotjs by using JsBarcode library.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kkeeth <zensin0082@gmail.com>",
   "license": "MIT",
   "bugs": {
