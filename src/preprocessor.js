@@ -2,10 +2,6 @@ import { registerPostprocessor } from "@riotjs/compiler";
 import babel from "@babel/core";
 
 registerPostprocessor((code, { options }) => {
-  /* eslint-disable no-console */
-  console.log("****debugging****");
-  console.log(options);
-
   return babel.transform(code, {
     sourceMaps: false,
     // retainLines: true,
@@ -15,9 +11,8 @@ registerPostprocessor((code, { options }) => {
         "@babel/preset-env",
         {
           targets: {
-            // ie: 11,
-            // edge: true,
-            // node: 12
+            ie: 11,
+            edge: true
           },
           loose: true,
           useBuiltIns: "usage"
