@@ -4,7 +4,7 @@
   <br />
 <a href="https://badge.fury.io/js/riot-barcode"><img src="https://badge.fury.io/js/riot-barcode.svg" alt="npm version" /></a>
 <a href="https://travis-ci.org/kkeeth/riot-barcode"><img src="https://travis-ci.org/kkeeth/riot-barcode.svg" alt="Build Status" /></a>
-<img src="https://img.shields.io/badge/node-%3E%3D%2012.18.3-brightgreen.svg?style=social" alt="nodejs version" />
+<img src="https://img.shields.io/badge/node-%3E%3D%2016.0.0-brightgreen.svg?style=social" alt="nodejs version" />
 <a href="https://github.com/kkeeth/riot-barcode/blob/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="MIT LICENSE" /></a>
 
 </p>
@@ -37,8 +37,8 @@ See also the [example directory](https://github.com/kkeeth/riot-barcode/tree/mas
     <script defer src="app.riot" type="riot"></script>
     <script>
       riot.compile().then(() => {
-        riot.mount("[is='app']");
-      });
+        riot.mount("[is='app']")
+      })
     </script>
   </body>
 </html>
@@ -59,7 +59,7 @@ See also the [example directory](https://github.com/kkeeth/riot-barcode/tree/mas
   <riot-barcode value="{ state.inputValue }" />
 
   <script>
-    const initialValue = "JsBarcode for RiotJS";
+    const initialValue = 'JsBarcode for RiotJS'
 
     export default {
       state: {
@@ -68,9 +68,9 @@ See also the [example directory](https://github.com/kkeeth/riot-barcode/tree/mas
       handleChange(e) {
         this.update({
           inputValue: e.target.value ? e.target.value : initialValue,
-        });
+        })
       },
-    };
+    }
   </script>
 </app>
 ```
@@ -117,24 +117,24 @@ $ npm install -S riot-barcode
 - app.js (your main js file)
 
 ```js
-import "@riotjs/hot-reload";
-import { component } from "riot";
-import "riot-barcode";
-import App from "./app.riot";
+import '@riotjs/hot-reload'
+import { component } from 'riot'
+import 'riot-barcode'
+import App from './app.riot'
 
-component(App)(document.querySelector("[data-riot-component]"));
+component(App)(document.querySelector('[data-riot-component]'))
 ```
 
 - webpack.config.js
 
 ```js
-const path = require("path");
+const path = require('path')
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: './src/app.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   devServer: {
     open: true,
@@ -146,7 +146,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "@riotjs/webpack-loader",
+            loader: '@riotjs/webpack-loader',
             options: {
               hot: true,
             },
@@ -155,7 +155,7 @@ module.exports = {
       },
     ],
   },
-};
+}
 ```
 
 # License

@@ -41,7 +41,6 @@
     "@riotjs/cli": "^6.1.0",
     "@riotjs/compiler": "^6.3.2",
     "@riotjs/hot-reload": "^6.0.0",
-    "@riotjs/ssr": "^4.2.1",
     "@riotjs/webpack-loader": "^6.0.0",
     "babel-loader": "^8.1.0",
     "canvas": "^2.6.1",
@@ -67,5 +66,8 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/kkeeth/riot-barcode.git"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
